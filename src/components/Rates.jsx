@@ -1,22 +1,25 @@
 import React from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 import './Rates.css'
 
 const Rates = () => {
+  const { t } = useLanguage()
+  
   const rates = [
     {
-      period: 'Basse saison',
+      period: t('rates.lowSeason'),
       dates: '20 mai - 30 juin & 1er - 10 septembre',
       price: '25€',
       description: 'Emplacement + 2 personnes + électricité'
     },
     {
-      period: 'Moyenne saison',
+      period: t('rates.midSeason'),
       dates: '1er juillet - 15 juillet & 16 août - 31 août',
       price: '32€',
       description: 'Emplacement + 2 personnes + électricité'
     },
     {
-      period: 'Haute saison',
+      period: t('rates.highSeason'),
       dates: '16 juillet - 15 août',
       price: '38€',
       description: 'Emplacement + 2 personnes + électricité'
@@ -35,8 +38,8 @@ const Rates = () => {
     <section id="tarifs" className="rates">
       <div className="container">
         <div className="section-header">
-          <h2>Nos Tarifs</h2>
-          <p>Des prix attractifs pour des vacances inoubliables</p>
+          <h2>{t('rates.title')}</h2>
+          <p>{t('rates.subtitle')}</p>
         </div>
 
         <div className="rates-grid">
@@ -55,10 +58,10 @@ const Rates = () => {
         </div>
 
         <div className="extras-section">
-          <h3>🎯 Suppléments</h3>
-          <div className="extras-grid">
+          <h3>Suppléments</h3>
+          <div className="extras-list">
             {extras.map((extra, index) => (
-              <div key={index} className="extra-item">
+              <div key={index} className="extra-row">
                 <span className="extra-name">{extra.item}</span>
                 <span className="extra-price">{extra.price}</span>
               </div>
@@ -81,10 +84,11 @@ const Rates = () => {
           <div className="payment-info">
             <h3>💳 Modalités de paiement</h3>
             <ul>
-              <li>Acompte de 30% à la réservation</li>
-              <li>Solde à l'arrivée</li>
-              <li>Espèces, chèques, cartes bancaires acceptés</li>
+              <li >Acompte de 30% à la réservation</li>
+              <li >Solde à l'arrivée</li>
+              <li>Espèces, chèques acceptés</li>
               <li>Chèques vacances ANCV acceptés</li>
+              <li >Cartes Bancaires non acceptés</li>
             </ul>
           </div>
         </div>

@@ -1,84 +1,86 @@
-import React from 'react'
-import './Location.css'
+import React, { useCallback } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import './Location.css';
 
 const Location = () => {
-  const attractions = [
-    { name: 'Plages de sable fin', distance: '14 km', icon: '🏖️' },
-    { name: 'Ville grecque d\'Agde', distance: '2 km', icon: '🏛️' },
-    { name: 'Canal du Midi', distance: '3 km', icon: '🚤' },
-    { name: 'Embouchure de l\'Hérault', distance: '5 km', icon: '🌊' },
-    { name: 'Stations du Grau et de la Tamarissière', distance: '8 km', icon: '🏖️' },
-    { name: 'Fort Brescou au large', distance: '15 km', icon: '🏰' }
-  ]
+  const { t } = useLanguage();
+
+  const campingAddress = "Camping La Canotte, Boulevard Saint-Christ, 34300 Le Grau-d'Agde, France";
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(campingAddress)}`;
+
+  const position = {
+    lat: 43.29075,
+    lng: 3.44735
+  };
+
+  const containerStyle = {
+    width: '100%',
+    height: '250px',
+    borderRadius: '15px 15px 0 0'
+  };
+
+  const onLoad = useCallback(marker => {
+    console.log('Marker loaded:', marker);
+  }, []);
 
   return (
-    <section id="region" className="location">
+    <section id="localisation" className="location">
       <div className="container">
         <div className="section-header">
-          <h2>Découvrir la Région</h2>
-          <p>Un emplacement privilégié au cœur de l'Hérault</p>
+          <h2>{t('location.title')}</h2>
+          <p>{t('location.subtitle')}</p>
         </div>
-        
+
         <div className="location-content">
           <div className="location-info">
-            <div className="address-card">
-              <h3>📍 Notre Adresse</h3>
-              <p>
-                <strong>Camping La Canotte</strong><br/>
-                Boulevard Saint-Christ<br/>
-                34300 Le Grau-d'Agde<br/>
-                Hérault, France
-              </p>
+            <div className="map-address-card">
+              <div className="map-container" onClick={() => window.open(googleMapsUrl, '_blank')}>
+                <LoadScript googleMapsApiKey="VOTRE_CLÉ_API">
+                  <GoogleMap
+                    mapContainerStyle={containerStyle}
+                    center={position}
+                    zoom={15}
+                    onLoad={onLoad}
+                  >
+                    <Marker position={position} />
+                  </GoogleMap>
+                </LoadScript>
+              </div>
+
+              <div className="address-section" onClick={() => window.open(googleMapsUrl, '_blank')}>
+                <h3>📍 Notre Adresse</h3>
+                <p>
+                  <strong>Camping La Canotte</strong><br />
+                  Boulevard Saint-Christ<br />
+                  34300 Le Grau-d'Agde<br />
+                  Hérault, France
+                </p>
+              </div>
             </div>
-            
-            <div className="season-info">
-              <h3>📅 Période d'ouverture</h3>
-              <p>
-                <strong>Du 20 mai au 10 septembre</strong><br/>
-                Accueil : 8h à 12h - 14h30 à 18h30
-              </p>
-            </div>
-          </div>
-          
-          <div className="attractions-grid">
-            <h3>🎯 À proximité</h3>
-            <div className="attractions-list">
-              {attractions.map((attraction, index) => (
-                <div key={index} className="attraction-item">
-                  <span className="attraction-icon">{attraction.icon}</span>
-                  <div className="attraction-info">
-                    <strong>{attraction.name}</strong>
-                    <span className="distance">{attraction.distance}</span>
-                  </div>
+
+            <div className="access-info">
+              <h3>🗺️ Accès & Transport</h3>
+              <div className="access-points">
+                <div className="access-point">
+                  <strong>🚗 Accès routier</strong>
+                  <p>Sortie A9 - Agde puis direction Le Grau-d'Agde</p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        
-        <div className="map-section">
-          <h3>🗺️ Situation géographique</h3>
-          <div className="map-placeholder">
-            <p>Carte interactive disponible sur demande</p>
-            <div className="map-info">
-              <div className="map-point">
-                <strong>🚗 Accès routier</strong>
-                <p>Sortie A9 - Agde puis direction Le Grau-d'Agde</p>
-              </div>
-              <div className="map-point">
-                <strong>🚂 Gare SNCF</strong>
-                <p>Gare d'Agde à 5 km</p>
-              </div>
-              <div className="map-point">
-                <strong>✈️ Aéroport</strong>
-                <p>Montpellier à 45 km</p>
+                <div className="access-point">
+                  <strong>🚂 Gare SNCF</strong>
+                  <p>Gare d'Agde à 5 km</p>
+                </div>
+                <div className="access-point">
+                  <strong>✈️ Aéroport</strong>
+                  <p>Montpellier à 45 km</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Location
+export default Location;

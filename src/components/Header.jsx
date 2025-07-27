@@ -15,11 +15,14 @@ import {
   useMediaQuery
 } from '@mui/material'
 import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material'
+import { useLanguage } from '../contexts/LanguageContext'
+import LanguageSelector from './LanguageSelector'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const { t } = useLanguage()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -34,15 +37,13 @@ const Header = () => {
   }
 
   const menuItems = [
-    { text: 'Accueil', id: 'accueil' },
-    { text: 'Le Camping', id: 'camping' },
-    { text: 'Équipements', id: 'equipements' },
-    { text: 'Les Activités', id: 'activites' },
-    { text: 'La Région', id: 'region' },
-    { text: 'Tarifs', id: 'tarifs' },
-    { text: 'Localisation', id: 'localisation' },
-    {text: 'Reservations', id: 'reservations'},
-    { text: 'Galerie', id: 'galerie' }
+    { text: t('header.home'), id: 'accueil' },
+    { text: t('header.facilities'), id: 'equipements' },
+    { text: t('header.activities'), id: 'activites' },
+    { text: t('header.rates'), id: 'tarifs' },
+    { text: t('header.location'), id: 'localisation' },
+    { text: t('header.contact'), id: 'contact' },
+    { text: t('header.gallery'), id: 'galerie' }
   ]
 
   return (
@@ -59,16 +60,19 @@ const Header = () => {
           </Box>
 
           {isMobile ? (
-            <IconButton
-              edge="end"
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleMenu}
-            >
-              <MenuIcon />
-            </IconButton>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <LanguageSelector />
+              <IconButton
+                edge="end"
+                color="inherit"
+                aria-label="menu"
+                onClick={toggleMenu}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Box>
           ) : (
-            <Box sx={{ display: 'flex', gap: 2 }}>
+            <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
               {menuItems.map((item) => (
                 <Button
                   key={item.id}
@@ -84,6 +88,7 @@ const Header = () => {
                   {item.text}
                 </Button>
               ))}
+              <LanguageSelector />
             </Box>
           )}
         </Toolbar>

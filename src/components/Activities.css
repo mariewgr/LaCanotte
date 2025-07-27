@@ -1,15 +1,15 @@
-.facilities {
+.activities {
   padding: 5rem 0;
   background: white;
 }
 
-.facilities-grid {
+.activities-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 colonnes par défaut */
   gap: 20px; /* espace entre les cartes */
 }
 
-.facility-card {
+.activities-card {
   background: #fff;
   border-radius: 10px;
   padding: 15px;
@@ -19,37 +19,37 @@
 
 /* Responsive: 2 colonnes pour tablette */
 @media (max-width: 1024px) {
-  .facilities-grid {
+  .activities-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Responsive: 1 colonne pour mobile */
 @media (max-width: 600px) {
-  .facilities-grid {
+  .activities-grid {
     grid-template-columns: 1fr;
   }
 }
 
 
-.facility-card:hover {
+.activities-card:hover {
   transform: translateY(-5px);
   border-color: #4a7c59;
   box-shadow: 0 10px 25px rgba(74, 124, 89, 0.15);
 }
 
-.facility-icon {
+.activity-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
 
-.facility-card h3 {
+.activity-card h3 {
   font-size: 1.3rem;
   color: #2c5530;
   margin-bottom: 0.5rem;
 }
 
-.facility-card p {
+.activity-card p {
   color: #666;
   line-height: 1.6;
 }
@@ -95,16 +95,16 @@
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-  .facilities {
+  .activities {
     padding: 3rem 0;
   }
 
-  .facilities-grid {
+  .activities-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
 
-  .facility-card {
+  .activity-card {
     padding: 1.5rem;
   }
 
@@ -123,11 +123,11 @@
 }
 
 @media (max-width: 480px) {
-  .facility-icon {
+  .activity-icon {
     font-size: 2.5rem;
   }
 
-  .facility-card h3 {
+  .activity-card h3 {
     font-size: 1.1rem;
   }
 

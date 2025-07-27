@@ -18,8 +18,10 @@ import {
   AccessTime as AccessTimeIcon,
   Emergency as EmergencyIcon
 } from '@mui/icons-material'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Contact = () => {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -58,7 +60,7 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: <PhoneIcon sx={{ fontSize: 30, color: '#2c5530' }} />,
-      title: 'Téléphone',
+      title: t('contact.phone'),
       content: (
         <>
           <Typography variant="h6" sx={{ fontWeight: 'bold' }}>04 67 94 20 54</Typography>
@@ -70,7 +72,7 @@ const Contact = () => {
     },
     {
       icon: <EmailIcon sx={{ fontSize: 30, color: '#2c5530' }} />,
-      title: 'Email',
+      title: t('contact.email'),
       content: (
         <>
           <Typography variant="h6" sx={{ fontWeight: 'bold' }}>contact@camping-lacanotte.fr</Typography>
@@ -82,7 +84,7 @@ const Contact = () => {
     },
     {
       icon: <LocationIcon sx={{ fontSize: 30, color: '#2c5530' }} />,
-      title: 'Adresse',
+      title: t('contact.address'),
       content: (
         <>
           <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Camping La Canotte</Typography>
@@ -96,12 +98,12 @@ const Contact = () => {
     },
     {
       icon: <AccessTimeIcon sx={{ fontSize: 30, color: '#2c5530' }} />,
-      title: 'Horaires d\'accueil',
+      title: t('contact.openingHours'),
       content: (
         <>
           <Typography variant="body2">
-            <strong>Haute saison :</strong> 8h-12h / 14h30-18h30<br/>
-            <strong>Basse saison :</strong> 9h-12h / 14h-18h<br/>
+            <strong>{t('contact.season')} :</strong> 8h-12h / 14h30-18h30<br/>
+            <strong>{t('contact.offSeason')} :</strong> 9h-12h / 14h-18h<br/>
             <em>Fermé le dimanche matin</em>
           </Typography>
         </>
@@ -110,15 +112,15 @@ const Contact = () => {
   ]
 
   return (
-    <Box id="reservations" component="section" sx={{ py: 8, backgroundColor: '#f8f9fa' }}>
+    <Box id="contact" component="section" sx={{ py: 8, backgroundColor: '#f8f9fa' }}>
       <Container maxWidth="lg">
         {/* Section Header */}
         <Box sx={{ textAlign: 'center', mb: 6 }}>
           <Typography variant="h3" component="h2" sx={{ fontWeight: 'bold', mb: 2, color: '#2c5530' }}>
-            Réservations et Contact
+            {t('contact.title')}
           </Typography>
           <Typography variant="h6" color="text.secondary">
-            Réservez votre séjour ou posez-nous vos questions
+            {t('contact.subtitle')}
           </Typography>
         </Box>
 
@@ -162,7 +164,7 @@ const Contact = () => {
                   <Grid item xs={12} sm={6}>
                     <TextField
                       fullWidth
-                      label="Nom complet"
+                      label={t('contact.form.name')}
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
@@ -173,7 +175,7 @@ const Contact = () => {
                   <Grid item xs={12} sm={6}>
                     <TextField
                       fullWidth
-                      label="Email"
+                      label={t('contact.form.email')}
                       name="email"
                       type="email"
                       value={formData.email}
@@ -185,7 +187,7 @@ const Contact = () => {
                   <Grid item xs={12} sm={6}>
                     <TextField
                       fullWidth
-                      label="Téléphone"
+                      label={t('contact.form.phone')}
                       name="phone"
                       type="tel"
                       value={formData.phone}
@@ -224,7 +226,7 @@ const Contact = () => {
                   <Grid item xs={12}>
                     <TextField
                       fullWidth
-                      label="Message"
+                      label={t('contact.form.message')}
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
@@ -249,7 +251,7 @@ const Contact = () => {
                         py: 1.5
                       }}
                     >
-                      Envoyer ma demande
+                      {t('contact.form.send')}
                     </Button>
                   </Grid>
                 </Grid>

@@ -17,11 +17,15 @@ import {
   Home as HomeIcon,
   Water as WaterIcon,
   Waves as WavesIcon,
-  CalendarMonth as CalendarIcon
+  CalendarMonth as CalendarIcon,
+  AccessibleForward as AccessibleForwardIcon,
+  Bungalow as BungalowIcon
 } from '@mui/icons-material'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const { t } = useLanguage()
   
   const slides = [
     {
@@ -68,23 +72,33 @@ const Hero = () => {
   const infoCards = [
     {
       icon: <HomeIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
-      title: 'Camping 2 étoiles',
-      description: 'Familial et convivial'
+      title: t('hero.infoCards.camping.title'),
+      description: t('hero.infoCards.camping.description')
     },
     {
       icon: <WaterIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
-      title: 'Bord de rivière',
-      description: 'Au bord de l\'Hérault'
+      title: t('hero.infoCards.river.title'),
+      description: t('hero.infoCards.river.description')
     },
     {
       icon: <WavesIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
-      title: 'Proche plages',
-      description: 'À 14 km de la mer'
+      title: t('hero.infoCards.beach.title'),
+      description: t('hero.infoCards.beach.description')
+    },
+    {
+      icon: <BungalowIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
+      title: t('hero.infoCards.big.title'),
+      description: t('hero.infoCards.big.description')
     },
     {
       icon: <CalendarIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
-      title: 'Saison',
-      description: '20 mai - 10 septembre'
+      title: t('hero.infoCards.season.title'),
+      description: t('hero.infoCards.season.description')
+    },
+    {
+      icon: <AccessibleForwardIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
+      title: t('hero.infoCards.handicap.title'),
+      description: t('hero.infoCards.handicap.description')
     }
   ]
 
@@ -209,7 +223,7 @@ const Hero = () => {
                   textShadow: '2px 2px 4px rgba(0,0,0,0.7)'
                 }}
               >
-                BIENVENUE AU CAMPING LA CANOTTE
+                {t('hero.title')}
               </Typography>
               <Typography 
                 variant={isMobile ? 'h6' : 'h4'} 
@@ -219,7 +233,7 @@ const Hero = () => {
                   textShadow: '1px 1px 2px rgba(0,0,0,0.7)'
                 }}
               >
-                Camping familial ★★ au Grau-d'Agde
+                {t('hero.subtitle')}
               </Typography>
               <Typography 
                 variant={isMobile ? 'body1' : 'h6'} 
@@ -230,8 +244,7 @@ const Hero = () => {
                   textShadow: '1px 1px 2px rgba(0,0,0,0.7)'
                 }}
               >
-                Situé en bordure du fleuve Hérault, La Canotte est un camping familial 
-                où vous trouverez repos et sérénité dans un cadre naturel exceptionnel.
+                {t('hero.description')}
               </Typography>
               <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
                 <Button
@@ -247,7 +260,7 @@ const Hero = () => {
                     py: 1.5
                   }}
                 >
-                  Voir les tarifs
+                  {t('hero.viewRates')}
                 </Button>
                 <Button
                   variant="outlined"
@@ -264,7 +277,7 @@ const Hero = () => {
                     py: 1.5
                   }}
                 >
-                  Nous contacter
+                  {t('hero.reservations')}
                 </Button>
               </Box>
             </Box>
@@ -275,7 +288,7 @@ const Hero = () => {
       {/* Info Cards Section */}
       <Box sx={{ py: 6, backgroundColor: '#f5f5f5' }}>
         <Container maxWidth="lg">
-          <Grid container spacing={3}>
+          <Grid container spacing={3} justifyContent="center" alignItems="stretch">
             {infoCards.map((card, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
                 <Card 

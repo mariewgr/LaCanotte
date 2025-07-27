@@ -1,229 +1,269 @@
-.location {
-  padding: 5rem 0;
-  background: #f8f9fa;
+.access-point {
+  padding: 0.8rem;
+}.location {
+padding: 5rem 0;
+background: #f8f9fa;
 }
 
 .section-header {
-  text-align: center;
-  margin-bottom: 4rem;
+text-align: center;
+margin-bottom: 4rem;
 }
 
 .section-header h2 {
-  font-size: 2.5rem;
-  color: #2c5530;
-  margin-bottom: 1rem;
+font-size: 2.5rem;
+color: #2c5530;
+margin-bottom: 1rem;
 }
 
 .section-header p {
-  font-size: 1.2rem;
-  color: #666;
-  max-width: 600px;
-  margin: 0 auto;
+font-size: 1.2rem;
+color: #666;
+max-width: 600px;
+margin: 0 auto;
 }
 
 .location-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  margin-bottom: 4rem;
+display: flex;
+flex-direction: column;
+gap: 4rem;
+}
+
+/* Layout principal - 2 blocs */
+.location-info {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 2rem;
+align-items: stretch;
+}
+
+/* Styles communs pour tous les blocs */
+.map-address-card,
+.access-info {
+background: white;
+border-radius: 15px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+transition: transform 0.3s ease;
+display: flex;
+flex-direction: column;
+height: 100%;
+}
+
+.map-address-card:hover,
+.access-info:hover {
+transform: translateY(-5px);
+box-shadow: 0 8px 25px rgba(44, 85, 48, 0.15);
+}
+
+/* Bloc carte + adresse fusionné */
+.map-address-card {
+overflow: hidden;
+padding: 0;
+}
+
+.map-container {
+position: relative;
+cursor: pointer;
+}
+
+.map-container iframe {
+width: 100%;
+display: block;
+}
+
+.map-overlay {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(44, 85, 48, 0.1);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+opacity: 0;
+transition: opacity 0.3s ease;
+pointer-events: none;
+}
+
+.map-container:hover .map-overlay {
+opacity: 1;
+}
+
+.map-pin {
+font-size: 3rem;
+color: #dc3545;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+animation: bounce 2s infinite ease-in-out;
+}
+
+.click-hint-map {
+background: white;
+padding: 0.5rem 1rem;
+border-radius: 20px;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+margin-top: 1rem;
+}
+
+.click-hint-map small {
+color: #2c5530;
+font-weight: 500;
+}
+
+.address-section {
+padding: 2rem;
+text-align: center;
+cursor: pointer;
+flex: 1;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.address-section h3 {
+font-size: 1.4rem;
+color: #2c5530;
+margin-bottom: 1rem;
+}
+
+.address-section p {
+line-height: 1.7;
+color: #555;
+font-size: 1rem;
+margin-bottom: 1rem;
+}
+
+.address-section .click-hint {
+margin-top: auto;
+padding-top: 1rem;
+border-top: 1px solid #eee;
+}
+
+.address-section .click-hint small {
+color: #2c5530;
+font-weight: 500;
+}
+
+@keyframes bounce {
+0%, 20%, 50%, 80%, 100% {
+  transform: translateY(0);
+}
+40% {
+  transform: translateY(-10px);
+}
+60% {
+  transform: translateY(-5px);
+}
+}
+
+/* Bloc accès */
+.access-info {
+padding: 2rem;
+}
+
+.access-info h3 {
+font-size: 1.4rem;
+color: #2c5530;
+margin-bottom: 1rem;
+}
+
+.access-points {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+flex: 1;
+}
+
+.access-point {
+padding: 1.2rem;
+background: #f8f9fa;
+border-radius: 10px;
+flex: 1;
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.access-point strong {
+color: #2c5530;
+font-size: 1rem;
+display: block;
+margin-bottom: 0.5rem;
+}
+
+.access-point p {
+color: #555;
+font-size: 0.95rem;
+line-height: 1.5;
+margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+.location-info {
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.access-points {
+  flex-direction: row;
+  gap: 1rem;
+}
+}
+
+@media (max-width: 768px) {
+.location {
+  padding: 3rem 0;
+}
+
+.section-header h2 {
+  font-size: 2rem;
 }
 
 .location-info {
-  display: flex;
-  flex-direction: column;
+  grid-template-columns: 1fr;
   gap: 2rem;
 }
 
-.address-card,
-.season-info {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
-}
-
-.address-card:hover,
-.season-info:hover {
-  transform: translateY(-5px);
-}
-
-.address-card h3,
-.season-info h3 {
-  font-size: 1.4rem;
-  color: #2c5530;
-  margin-bottom: 1rem;
-}
-
-.address-card p,
-.season-info p {
-  line-height: 1.7;
-  color: #555;
-  font-size: 1rem;
-}
-
-.attractions-grid h3 {
-  font-size: 1.4rem;
-  color: #2c5530;
-  margin-bottom: 2rem;
-}
-
-.attractions-list {
-  display: grid;
-  gap: 1rem;
-}
-
-.attraction-item {
-  background: white;
+.address-section {
   padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  display: flex;
-  align-items: center;
+}
+
+.access-points {
+  flex-direction: column;
   gap: 1rem;
-  transition: transform 0.3s ease;
 }
 
-.attraction-item:hover {
-  transform: translateY(-3px);
+.access-point {
+  padding: 1rem;
 }
 
-.attraction-icon {
+.interactive-map iframe {
+  min-height: 250px;
+}
+
+.map-pin {
   font-size: 2rem;
-  flex-shrink: 0;
 }
-
-.attraction-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  flex-grow: 1;
-}
-
-.attraction-info strong {
-  color: #2c5530;
-  font-size: 1rem;
-}
-
-.distance {
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.map-section {
-  margin-top: 4rem;
-}
-
-.map-section h3 {
-  font-size: 1.4rem;
-  color: #2c5530;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.map-placeholder {
-  background: white;
-  padding: 3rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-  text-align: center;
-}
-
-.map-placeholder p {
-  color: #666;
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-}
-
-.map-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.map-point {
-  text-align: left;
-  padding: 1.5rem;
-  background: #f8f9fa;
-  border-radius: 10px;
-}
-
-.map-point strong {
-  color: #2c5530;
-  font-size: 1.1rem;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.map-point p {
-  color: #555;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* Mobile Styles */
-@media (max-width: 768px) {
-  .location {
-    padding: 3rem 0;
-  }
-
-  .section-header h2 {
-    font-size: 2rem;
-  }
-
-  .location-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .address-card,
-  .season-info {
-    padding: 1.5rem;
-  }
-
-  .attraction-item {
-    padding: 1rem;
-  }
-
-  .attraction-icon {
-    font-size: 1.5rem;
-  }
-
-  .map-info {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .map-point {
-    padding: 1rem;
-  }
-
-  .map-placeholder {
-    padding: 2rem;
-  }
 }
 
 @media (max-width: 480px) {
-  .section-header h2 {
-    font-size: 1.8rem;
-  }
+.section-header h2 {
+  font-size: 1.8rem;
+}
 
-  .address-card h3,
-  .season-info h3,
-  .attractions-grid h3,
-  .map-section h3 {
-    font-size: 1.2rem;
-  }
+.address-section h3,
+.access-info h3 {
+  font-size: 1.2rem;
+}
 
-  .attraction-item {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.5rem;
-  }
+.address-section,
+.access-info {
+  padding: 1.2rem;
+}
 
-  .attraction-info {
-    align-items: center;
-  }
+.map-container iframe {
+  height: 180px;
+}
 }
