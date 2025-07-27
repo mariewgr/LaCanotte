@@ -1,0 +1,229 @@
+.location {
+  padding: 5rem 0;
+  background: #f8f9fa;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: #2c5530;
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.location-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.location-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.address-card,
+.season-info {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.address-card:hover,
+.season-info:hover {
+  transform: translateY(-5px);
+}
+
+.address-card h3,
+.season-info h3 {
+  font-size: 1.4rem;
+  color: #2c5530;
+  margin-bottom: 1rem;
+}
+
+.address-card p,
+.season-info p {
+  line-height: 1.7;
+  color: #555;
+  font-size: 1rem;
+}
+
+.attractions-grid h3 {
+  font-size: 1.4rem;
+  color: #2c5530;
+  margin-bottom: 2rem;
+}
+
+.attractions-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.attraction-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.attraction-item:hover {
+  transform: translateY(-3px);
+}
+
+.attraction-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.attraction-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex-grow: 1;
+}
+
+.attraction-info strong {
+  color: #2c5530;
+  font-size: 1rem;
+}
+
+.distance {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.map-section {
+  margin-top: 4rem;
+}
+
+.map-section h3 {
+  font-size: 1.4rem;
+  color: #2c5530;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.map-placeholder {
+  background: white;
+  padding: 3rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.map-placeholder p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.map-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.map-point {
+  text-align: left;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.map-point strong {
+  color: #2c5530;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.map-point p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .location {
+    padding: 3rem 0;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .location-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .address-card,
+  .season-info {
+    padding: 1.5rem;
+  }
+
+  .attraction-item {
+    padding: 1rem;
+  }
+
+  .attraction-icon {
+    font-size: 1.5rem;
+  }
+
+  .map-info {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .map-point {
+    padding: 1rem;
+  }
+
+  .map-placeholder {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .address-card h3,
+  .season-info h3,
+  .attractions-grid h3,
+  .map-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .attraction-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .attraction-info {
+    align-items: center;
+  }
+}

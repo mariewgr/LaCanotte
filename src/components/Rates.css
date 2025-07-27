@@ -1,0 +1,242 @@
+.rates {
+  padding: 5rem 0;
+  background: white;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: #2c5530;
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.rates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.rate-card {
+  background: #f8f9fa;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.rate-card:hover {
+  transform: translateY(-5px);
+}
+
+.rate-header {
+  background: #2c5530;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.rate-header h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.price span {
+  font-size: 1rem;
+  font-weight: normal;
+  opacity: 0.8;
+}
+
+.rate-content {
+  padding: 2rem;
+}
+
+.dates {
+  color: #2c5530;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.description {
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.extras-section {
+  margin-bottom: 4rem;
+}
+
+.extras-section h3 {
+  font-size: 1.8rem;
+  color: #2c5530;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.extras-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.extra-item {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.extra-name {
+  color: #555;
+  font-weight: 500;
+}
+
+.extra-price {
+  color: #2c5530;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.booking-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.info-card,
+.payment-info {
+  background: #f8f9fa;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.info-card h3,
+.payment-info h3 {
+  font-size: 1.4rem;
+  color: #2c5530;
+  margin-bottom: 1.5rem;
+}
+
+.info-card ul,
+.payment-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-card li,
+.payment-info li {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #e0e0e0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.info-card li:last-child,
+.payment-info li:last-child {
+  border-bottom: none;
+}
+
+.info-card li:before,
+.payment-info li:before {
+  content: "✓";
+  color: #2c5530;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .rates {
+    padding: 3rem 0;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .rates-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .rate-header {
+    padding: 1.5rem;
+  }
+
+  .rate-content {
+    padding: 1.5rem;
+  }
+
+  .price {
+    font-size: 2rem;
+  }
+
+  .extras-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-info {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .info-card,
+  .payment-info {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .extras-section h3 {
+    font-size: 1.5rem;
+  }
+
+  .rate-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .price {
+    font-size: 1.8rem;
+  }
+
+  .extra-item {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .info-card h3,
+  .payment-info h3 {
+    font-size: 1.2rem;
+  }
+}
