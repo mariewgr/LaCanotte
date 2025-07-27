@@ -1,58 +1,312 @@
-import React from 'react'
-import './Hero.css'
+import React, { useState, useEffect } from 'react'
+import {
+  Box,
+  Container,
+  Typography,
+  Button,
+  IconButton,
+  Card,
+  CardContent,
+  Grid,
+  useTheme,
+  useMediaQuery
+} from '@mui/material'
+import { 
+  ChevronLeft as ChevronLeftIcon, 
+  ChevronRight as ChevronRightIcon,
+  Home as HomeIcon,
+  Water as WaterIcon,
+  Waves as WavesIcon,
+  CalendarMonth as CalendarIcon
+} from '@mui/icons-material'
 
 const Hero = () => {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  
+  const slides = [
+    {
+      image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+      alt: 'Vue générale du camping'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+      alt: 'Emplacements camping'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+      alt: 'Rivière Hérault'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+      alt: 'Nature environnante'
+    }
+  ]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 5000) // Change d'image toutes les 5 secondes
+
+    return () => clearInterval(timer)
+  }, [slides.length])
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index)
+  }
+
+  const goToPrevious = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+  }
+
+  const goToNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
+  }
+
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+
+  const infoCards = [
+    {
+      icon: <HomeIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
+      title: 'Camping 2 étoiles',
+      description: 'Familial et convivial'
+    },
+    {
+      icon: <WaterIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
+      title: 'Bord de rivière',
+      description: 'Au bord de l\'Hérault'
+    },
+    {
+      icon: <WavesIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
+      title: 'Proche plages',
+      description: 'À 14 km de la mer'
+    },
+    {
+      icon: <CalendarIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
+      title: 'Saison',
+      description: '20 mai - 10 septembre'
+    }
+  ]
+
   return (
-    <section id="accueil" className="hero">
-      <div className="hero-overlay">
-        <div className="container">
-          <div className="hero-content">
-            <h1>BIENVENUE AU CAMPING LA CANOTTE</h1>
-            <p className="hero-subtitle">Camping familial ★★ au Grau-d'Agde</p>
-            <p className="hero-description">
-              Situé en bordure du fleuve Hérault, La Canotte est un camping familial 
-              où vous trouverez repos et sérénité dans un cadre naturel exceptionnel.
-            </p>
-            <div className="hero-buttons">
-              <button 
-                className="btn btn-primary"
-                onClick={() => document.getElementById('tarifs').scrollIntoView({ behavior: 'smooth' })}
+    <Box id="accueil" component="section">
+      {/* Carousel Section */}
+      <Box sx={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+        {slides.map((slide, index) => (
+          <Box
+            key={index}
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              backgroundImage: `url(${slide.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              opacity: index === currentSlide ? 1 : 0,
+              transition: 'opacity 1s ease-in-out',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'rgba(0, 0, 0, 0.4)'
+              }
+            }}
+          />
+        ))}
+        
+        {/* Navigation Buttons */}
+        <IconButton
+          onClick={goToPrevious}
+          sx={{
+            position: 'absolute',
+            left: 20,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            color: 'white',
+            zIndex: 2,
+            '&:hover': {
+              backgroundColor: 'rgba(255, 255, 255, 0.3)'
+            }
+          }}
+        >
+          <ChevronLeftIcon sx={{ fontSize: 30 }} />
+        </IconButton>
+        
+        <IconButton
+          onClick={goToNext}
+          sx={{
+            position: 'absolute',
+            right: 20,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
+            color: 'white',
+            zIndex: 2,
+            '&:hover': {
+              backgroundColor: 'rgba(255, 255, 255, 0.3)'
+            }
+          }}
+        >
+          <ChevronRightIcon sx={{ fontSize: 30 }} />
+        </IconButton>
+        
+        {/* Indicators */}
+        <Box
+          sx={{
+            position: 'absolute',
+            bottom: 20,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex',
+            gap: 1,
+            zIndex: 2
+          }}
+        >
+          {slides.map((_, index) => (
+            <Box
+              key={index}
+              onClick={() => goToSlide(index)}
+              sx={{
+                width: 12,
+                height: 12,
+                borderRadius: '50%',
+                backgroundColor: index === currentSlide ? 'white' : 'rgba(255, 255, 255, 0.5)',
+                cursor: 'pointer',
+                transition: 'background-color 0.3s ease'
+              }}
+            />
+          ))}
+        </Box>
+
+        {/* Hero Content Overlay */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1
+          }}
+        >
+          <Container maxWidth="lg">
+            <Box sx={{ textAlign: 'center', color: 'white' }}>
+              <Typography 
+                variant={isMobile ? 'h3' : 'h1'} 
+                component="h1" 
+                sx={{ 
+                  fontWeight: 'bold', 
+                  mb: 2,
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.7)'
+                }}
               >
-                Voir les tarifs
-              </button>
-              <button 
-                className="btn btn-secondary"
-                onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                BIENVENUE AU CAMPING LA CANOTTE
+              </Typography>
+              <Typography 
+                variant={isMobile ? 'h6' : 'h4'} 
+                sx={{ 
+                  mb: 3, 
+                  color: '#ffd700',
+                  textShadow: '1px 1px 2px rgba(0,0,0,0.7)'
+                }}
               >
-                Nous contacter
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="hero-info">
-        <div className="container">
-          <div className="info-cards">
-            <div className="info-card">
-              <h3>🏕️ Camping 2 étoiles</h3>
-              <p>Familial et convivial</p>
-            </div>
-            <div className="info-card">
-              <h3>🌊 Bord de rivière</h3>
-              <p>Au bord de l'Hérault</p>
-            </div>
-            <div className="info-card">
-              <h3>🏖️ Proche plages</h3>
-              <p>À 14 km de la mer</p>
-            </div>
-            <div className="info-card">
-              <h3>📅 Saison</h3>
-              <p>20 mai - 10 septembre</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                Camping familial ★★ au Grau-d'Agde
+              </Typography>
+              <Typography 
+                variant={isMobile ? 'body1' : 'h6'} 
+                sx={{ 
+                  mb: 4, 
+                  maxWidth: 600, 
+                  mx: 'auto',
+                  textShadow: '1px 1px 2px rgba(0,0,0,0.7)'
+                }}
+              >
+                Situé en bordure du fleuve Hérault, La Canotte est un camping familial 
+                où vous trouverez repos et sérénité dans un cadre naturel exceptionnel.
+              </Typography>
+              <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  onClick={() => document.getElementById('tarifs').scrollIntoView({ behavior: 'smooth' })}
+                  sx={{
+                    backgroundColor: '#2c5530',
+                    '&:hover': {
+                      backgroundColor: '#1e3a21'
+                    },
+                    px: 4,
+                    py: 1.5
+                  }}
+                >
+                  Voir les tarifs
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+                  sx={{
+                    borderColor: 'white',
+                    color: 'white',
+                    '&:hover': {
+                      borderColor: 'white',
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    px: 4,
+                    py: 1.5
+                  }}
+                >
+                  Nous contacter
+                </Button>
+              </Box>
+            </Box>
+          </Container>
+        </Box>
+      </Box>
+
+      {/* Info Cards Section */}
+      <Box sx={{ py: 6, backgroundColor: '#f5f5f5' }}>
+        <Container maxWidth="lg">
+          <Grid container spacing={3}>
+            {infoCards.map((card, index) => (
+              <Grid item xs={12} sm={6} md={3} key={index}>
+                <Card 
+                  sx={{ 
+                    height: '100%', 
+                    textAlign: 'center',
+                    transition: 'transform 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-5px)',
+                      boxShadow: 3
+                    }
+                  }}
+                >
+                  <CardContent sx={{ p: 3 }}>
+                    <Box sx={{ mb: 2 }}>
+                      {card.icon}
+                    </Box>
+                    <Typography variant="h6" component="h3" sx={{ mb: 1, fontWeight: 'bold' }}>
+                      {card.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {card.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+    </Box>
   )
 }
 

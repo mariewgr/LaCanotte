@@ -1,6 +1,5 @@
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-              url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,9 +7,104 @@
   color: white;
   text-align: center;
   margin-top: 80px;
+  overflow: hidden;
+}
+
+.carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 3;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn-prev {
+  left: 2rem;
+}
+
+.carousel-btn-next {
+  right: 2rem;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 3;
+}
+
+.carousel-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+  background: white;
+}
+
+.carousel-indicator:hover {
+  transform: scale(1.2);
 }
 
 .hero-overlay {
+  position: relative;
+  z-index: 2;
   flex: 1;
   display: flex;
   align-items: center;
@@ -152,6 +246,28 @@
     gap: 1rem;
     padding: 0 1rem;
   }
+
+  .carousel-btn {
+    font-size: 1.5rem;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .carousel-btn-prev {
+    left: 1rem;
+  }
+
+  .carousel-btn-next {
+    right: 1rem;
+  }
+
+  .carousel-indicators {
+    bottom: 1rem;
+  }
+
+  .carousel-indicator {
+    width: 10px;
+    height: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -161,5 +277,23 @@
 
   .hero-subtitle {
     font-size: 1.1rem;
+  }
+
+  .carousel-btn {
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .carousel-btn-prev {
+    left: 0.5rem;
+  }
+
+  .carousel-btn-next {
+    right: 0.5rem;
+  }
+
+  .carousel-indicator {
+    width: 8px;
+    height: 8px;
   }
 }

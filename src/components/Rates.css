@@ -22,8 +22,8 @@
 }
 
 .rates-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
   margin-bottom: 4rem;
 }
@@ -92,8 +92,8 @@
 }
 
 .extras-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
   max-width: 800px;
   margin: 0 auto;
@@ -121,8 +121,8 @@
 }
 
 .booking-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 3rem;
   margin-top: 3rem;
 }

@@ -22,8 +22,8 @@
 }
 
 .location-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 4rem;
   margin-bottom: 4rem;
 }
@@ -136,8 +136,8 @@
 }
 
 .map-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
   margin-top: 2rem;
 }
