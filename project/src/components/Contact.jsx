@@ -47,70 +47,6 @@ const Contact = () => {
     setTimeout(() => setShowSuccess(false), 5000)
   }
 
-  const guestOptions = [
-    { value: '', label: 'Sélectionner' },
-    { value: '1', label: '1 personne' },
-    { value: '2', label: '2 personnes' },
-    { value: '3', label: '3 personnes' },
-    { value: '4', label: '4 personnes' },
-    { value: '5', label: '5 personnes' },
-    { value: '6+', label: '6 personnes ou plus' }
-  ]
-
-  const contactInfo = [
-    {
-      icon: <PhoneIcon sx={{ fontSize: 30, color: '#2c5530' }} />,
-      title: t('contact.phone'),
-      content: (
-        <>
-          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>04 67 94 20 54</Typography>
-          <Typography variant="body2" color="text.secondary">
-            Ouvert de 8h à 12h et 14h30 à 18h30
-          </Typography>
-        </>
-      )
-    },
-    {
-      icon: <EmailIcon sx={{ fontSize: 30, color: '#2c5530' }} />,
-      title: t('contact.email'),
-      content: (
-        <>
-          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>contact@camping-lacanotte.fr</Typography>
-          <Typography variant="body2" color="text.secondary">
-            Réponse sous 24h
-          </Typography>
-        </>
-      )
-    },
-    {
-      icon: <LocationIcon sx={{ fontSize: 30, color: '#2c5530' }} />,
-      title: t('contact.address'),
-      content: (
-        <>
-          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>Camping La Canotte</Typography>
-          <Typography variant="body2" color="text.secondary">
-            Boulevard Saint-Christ<br/>
-            34300 Le Grau-d'Agde<br/>
-            Hérault, France
-          </Typography>
-        </>
-      )
-    },
-    {
-      icon: <AccessTimeIcon sx={{ fontSize: 30, color: '#2c5530' }} />,
-      title: t('contact.openingHours'),
-      content: (
-        <>
-          <Typography variant="body2">
-            <strong>{t('contact.season')} :</strong> 8h-12h / 14h30-18h30<br/>
-            <strong>{t('contact.offSeason')} :</strong> 9h-12h / 14h-18h<br/>
-            <em>Fermé le dimanche matin</em>
-          </Typography>
-        </>
-      )
-    }
-  ]
-
   return (
     <Box id="contact" component="section" sx={{ py: 8, backgroundColor: '#f8f9fa' }}>
       <Container maxWidth="lg">
@@ -123,142 +59,129 @@ const Contact = () => {
             {t('contact.subtitle')}
           </Typography>
         </Box>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4 }}>
+  {/* Colonne Gauche : Infos de contact */}
+  <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', pb: 4 }}>
+  <Card sx={{ p: 3, height: '100%', width: '100%', maxWidth: 500 }}>
+    <Typography variant="h5" sx={{ mb: 3, fontWeight: 'bold', color: '#2c5530', textAlign: 'center' }}>
+      {t('contact.phone')} & {t('contact.email')}
+    </Typography>
 
-        <Grid container spacing={4}>
-          {/* Contact Info */}
-          <Grid item xs={12} md={6}>
-            <Grid container spacing={3}>
-              {contactInfo.map((info, index) => (
-                <Grid item xs={12} sm={6} key={index}>
-                  <Card sx={{ height: '100%', p: 2 }}>
-                    <CardContent>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                        {info.icon}
-                        <Typography variant="h6" sx={{ ml: 1, fontWeight: 'bold' }}>
-                          {info.title}
-                        </Typography>
-                      </Box>
-                      {info.content}
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </Grid>
+    {/* Téléphones */}
+    <Box sx={{ mb: 3, textAlign: 'center' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1 }}>
+        <PhoneIcon sx={{ color: '#2c5530', mr: 1 }} />
+        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+          <a href="tel:0626150157" style={{ color: '#2c5530', textDecoration: 'none' }}>
+            06 26 15 01 57
+          </a>{' '}ou{' '}
+          <a href="tel:0467941574" style={{ color: '#2c5530', textDecoration: 'none' }}>
+            04 67 94 15 74
+          </a>
+        </Typography>
+      </Box>
+      <Typography variant="body2" color="text.secondary">
+        Du lundi au vendredi : 8h – 12h / 14h30 – 18h30
+      </Typography>
+    </Box>
 
-          {/* Contact Form */}
-          <Grid item xs={12} md={6}>
-            <Card sx={{ p: 3 }}>
-              <Typography variant="h5" sx={{ mb: 3, fontWeight: 'bold', color: '#2c5530' }}>
-                ✉️ Demande de renseignements
-              </Typography>
-              
-              {showSuccess && (
-                <Alert severity="success" sx={{ mb: 3 }}>
-                  Votre demande a été envoyée ! Nous vous répondrons rapidement.
-                </Alert>
-              )}
+    {/* Email */}
+    <Box sx={{ mb: 3, textAlign: 'center' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1 }}>
+        <EmailIcon sx={{ color: '#2c5530', mr: 1 }} />
+        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+          <a
+            href="mailto:campinglacanotte@outlook.fr"
+            style={{ color: '#2c5530', textDecoration: 'none' }}
+          >
+            campinglacanotte@outlook.fr
+          </a>
+        </Typography>
+      </Box>
+    </Box>
 
-              <Box component="form" onSubmit={handleSubmit}>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      label={t('contact.form.name')}
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      label={t('contact.form.email')}
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      label={t('contact.form.phone')}
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      fullWidth
-                      select
-                      label="Nombre de personnes"
-                      name="guests"
-                      value={formData.guests}
-                      onChange={handleChange}
-                      variant="outlined"
-                    >
-                      {guestOptions.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.label}
-                        </MenuItem>
-                      ))}
-                    </TextField>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      label="Dates souhaitées"
-                      name="dates"
-                      value={formData.dates}
-                      onChange={handleChange}
-                      placeholder="Ex: du 15 au 22 juillet 2024"
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      label={t('contact.form.message')}
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      multiline
-                      rows={5}
-                      placeholder="Décrivez votre demande, vos besoins spécifiques..."
-                      variant="outlined"
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      size="large"
-                      fullWidth
-                      sx={{
-                        backgroundColor: '#2c5530',
-                        '&:hover': {
-                          backgroundColor: '#1e3a21'
-                        },
-                        py: 1.5
-                      }}
-                    >
-                      {t('contact.form.send')}
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Box>
-            </Card>
-          </Grid>
-        </Grid>
+    <Alert severity="info" sx={{ textAlign: 'left' }}>
+      Toute réservation se fait par téléphone ou par mail.
+    </Alert>
+  </Card>
+</Box>
+
+
+  {/* Colonne Droite : Formulaire */}
+  <Box sx={{ flex: 1, pb: 4 }}>
+    <Card sx={{ p: 3, height: '100%' }}>
+      <Typography variant="h5" sx={{ mb: 3, fontWeight: 'bold', color: '#2c5530' }}>
+        ✉️ Demande de renseignements
+      </Typography>
+
+      {showSuccess && (
+        <Alert severity="success" sx={{ mb: 3 }}>
+          Votre demande a été envoyée ! Nous vous répondrons rapidement.
+        </Alert>
+      )}
+
+      <Box component="form" onSubmit={handleSubmit}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <TextField
+            fullWidth
+            label={t('contact.form.name')}
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            variant="outlined"
+          />
+          <TextField
+            fullWidth
+            label={t('contact.form.email')}
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            variant="outlined"
+          />
+          <TextField
+            fullWidth
+            label={t('contact.form.phone')}
+            name="phone"
+            type="tel"
+            value={formData.phone}
+            onChange={handleChange}
+            variant="outlined"
+          />
+          <TextField
+            fullWidth
+            label={t('contact.form.message')}
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            multiline
+            rows={5}
+            placeholder="Décrivez votre demande, vos besoins spécifiques..."
+            variant="outlined"
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            fullWidth
+            sx={{
+              backgroundColor: '#2c5530',
+              '&:hover': {
+                backgroundColor: '#1e3a21'
+              },
+              py: 1.5
+            }}
+          >
+            {t('contact.form.send')}
+          </Button>
+        </Box>
+      </Box>
+    </Card>
+  </Box>
+</Box>
 
         {/* Emergency Contact */}
         <Box sx={{ mt: 6 }}>

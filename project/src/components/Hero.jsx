@@ -69,39 +69,6 @@ const Hero = () => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
-  const infoCards = [
-    {
-      icon: <HomeIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
-      title: t('hero.infoCards.camping.title'),
-      description: t('hero.infoCards.camping.description')
-    },
-    {
-      icon: <WaterIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
-      title: t('hero.infoCards.river.title'),
-      description: t('hero.infoCards.river.description')
-    },
-    {
-      icon: <WavesIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
-      title: t('hero.infoCards.beach.title'),
-      description: t('hero.infoCards.beach.description')
-    },
-    {
-      icon: <BungalowIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
-      title: t('hero.infoCards.big.title'),
-      description: t('hero.infoCards.big.description')
-    },
-    {
-      icon: <CalendarIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
-      title: t('hero.infoCards.season.title'),
-      description: t('hero.infoCards.season.description')
-    },
-    {
-      icon: <AccessibleForwardIcon sx={{ fontSize: 40, color: '#2c5530' }} />,
-      title: t('hero.infoCards.handicap.title'),
-      description: t('hero.infoCards.handicap.description')
-    }
-  ]
-
   return (
     <Box id="accueil" component="section">
       {/* Carousel Section */}
@@ -283,41 +250,6 @@ const Hero = () => {
             </Box>
           </Container>
         </Box>
-      </Box>
-
-      {/* Info Cards Section */}
-      <Box sx={{ py: 6, backgroundColor: '#f5f5f5' }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={3} justifyContent="center" alignItems="stretch">
-            {infoCards.map((card, index) => (
-              <Grid item xs={12} sm={6} md={3} key={index}>
-                <Card 
-                  sx={{ 
-                    height: '100%', 
-                    textAlign: 'center',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-5px)',
-                      boxShadow: 3
-                    }
-                  }}
-                >
-                  <CardContent sx={{ p: 3 }}>
-                    <Box sx={{ mb: 2 }}>
-                      {card.icon}
-                    </Box>
-                    <Typography variant="h6" component="h3" sx={{ mb: 1, fontWeight: 'bold' }}>
-                      {card.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {card.description}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
       </Box>
     </Box>
   )

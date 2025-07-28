@@ -39,7 +39,6 @@ const Header = () => {
   const menuItems = [
     { text: t('header.home'), id: 'accueil' },
     { text: t('header.facilities'), id: 'equipements' },
-    { text: t('header.activities'), id: 'activites' },
     { text: t('header.rates'), id: 'tarifs' },
     { text: t('header.location'), id: 'localisation' },
     { text: t('header.contact'), id: 'contact' },

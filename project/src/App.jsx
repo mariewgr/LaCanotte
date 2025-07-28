@@ -18,9 +18,7 @@ function App() {
       <div className="App">
         <Header />
         <Hero />
-        {/* <About /> */}
         <Facilities />
-        <Activities />
         <Rates />
         <Location />
         <Contact />
