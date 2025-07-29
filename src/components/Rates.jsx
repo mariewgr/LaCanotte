@@ -7,31 +7,23 @@ const Rates = () => {
   
   const rates = [
     {
-      period: t('rates.lowSeason'),
-      dates: '20 mai - 30 juin & 1er - 10 septembre',
+      period: t('rates.withooutelectricity'),
+      price: '19€',
+      description: 'Emplacement + 2 personnes, comprenant l’accès aux sanitaires et les taxes',
+    },
+    {
+      period: t('rates.withelectricity'),
       price: '25€',
-      description: 'Emplacement + 2 personnes + électricité'
-    },
-    {
-      period: t('rates.midSeason'),
-      dates: '1er juillet - 15 juillet & 16 août - 31 août',
-      price: '32€',
-      description: 'Emplacement + 2 personnes + électricité'
-    },
-    {
-      period: t('rates.highSeason'),
-      dates: '16 juillet - 15 août',
-      price: '38€',
-      description: 'Emplacement + 2 personnes + électricité'
+      description: 'Emplacement + 2 personnes + électricité, comprenant l’accès aux sanitaires et les taxes',
     }
   ]
 
   const extras = [
-    { item: 'Personne supplémentaire', price: '5€/nuit' },
-    { item: 'Enfant (3-7 ans)', price: '3€/nuit' },
-    { item: 'Enfant (-3 ans)', price: 'Gratuit' },
-    { item: 'Animal domestique', price: '3€/nuit' },
-    { item: 'Véhicule supplémentaire', price: '3€/nuit' }
+    { item: 'Personne supplémentaire majeure', price: '8€/nuit' },
+    { item: 'Enfant de -7 ans', price: '5€/nuit' },
+    { item: 'Ado de 7 à 17 ans', price: '6,5€/nuit' },
+    { item: 'Chien', price: '2€/nuit' },
+    { item: 'Éléctricité', price: '6€/nuit' }
   ]
 
   return (

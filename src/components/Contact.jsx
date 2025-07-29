@@ -48,7 +48,7 @@ const Contact = () => {
   }
 
   return (
-    <Box id="contact" component="section" sx={{ py: 8, backgroundColor: '#f8f9fa' }}>
+    <Box id="contact" component="section" sx={{ py: 8}}>
       <Container maxWidth="lg" >
         {/* Section Header */}
         <Box sx={{ textAlign: 'center', mb: 6 }}>
