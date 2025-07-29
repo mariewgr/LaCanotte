@@ -28,41 +28,30 @@ const Facilities = () => {
 
   return (
     <section id="equipements" className="facilities">
-      <div className="facilities-container">
-        {/* Section Équipements */}
-        <div className="facilities-section">
-          <div className="section-header">
-            <h2>{t('facilities.title')}</h2>
-          </div>
-          <div className="facilities-grid">
-            {facilities.map((facility, index) => (
-              <div key={index} className="facility-item">
-                <span className="check-icon">✅</span>
-                <span className="facility-content">
-                  <strong>{facility.title}</strong>
-                </span>
-              </div>
+      <div className="booking-info">
+        <div>
+          <h2>Équipements</h2>
+          <ul className="facilities-grid">
+            {facilities.map((extra, index) => (
+              <li key={index} className="extra-row">
+                <span className="extra-name">{extra.title}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
-
-        {/* Section Loisirs */}
-        <div className="facilities-section">
-          <div className="section-header">
-            <h2>{t('activities.title')}</h2>
-          </div>
-          <div className="facilities-grid">
-            {activities.map((activity, index) => (
-              <div key={index} className="facility-item">
-                <span className="check-icon">✅</span>
-                <span className="facility-content">
-                  <strong>{activity.title}</strong>
-                </span>
-              </div>
+          
+          <div>
+            <h2>Loisirs</h2>
+            <ul className="facilities-grid">
+            {activities.map((extra, index) => (
+              <li key={index} className="extra-row">
+                <span className="extra-name">{extra.title}</span>
+              </li>
             ))}
+            </ul>
           </div>
+        
         </div>
-      </div>
     </section>
   )
 }

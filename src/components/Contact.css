@@ -20,6 +20,57 @@
   max-width: 600px;
   margin: 0 auto;
 }
+/* Contact.css */
+
+.contact-section {
+  padding: 5rem 0;
+  background: #f8f9fa;
+}
+
+.contact-info-block {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  padding: 2rem;
+  height: 100%;
+}
+
+.contact-info-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(44, 85, 48, 0.15);
+}
+
+.contact-info-title {
+  font-size: 1.4rem;
+  color: #2c5530;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.contact-item {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.contact-item a {
+  color: #2c5530;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-note {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 2rem;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
 
 .contact-content {
   display: flex;

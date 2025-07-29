@@ -49,7 +49,7 @@ const Contact = () => {
 
   return (
     <Box id="contact" component="section" sx={{ py: 8, backgroundColor: '#f8f9fa' }}>
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" >
         {/* Section Header */}
         <Box sx={{ textAlign: 'center', mb: 6 }}>
           <Typography variant="h3" component="h2" sx={{ fontWeight: 'bold', mb: 2, color: '#2c5530' }}>
@@ -59,56 +59,83 @@ const Contact = () => {
             {t('contact.subtitle')}
           </Typography>
         </Box>
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4 }}>
-  {/* Colonne Gauche : Infos de contact */}
-  <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', pb: 4 }}>
-  <Card sx={{ p: 3, height: '100%', width: '100%', maxWidth: 500 }}>
-    <Typography variant="h5" sx={{ mb: 3, fontWeight: 'bold', color: '#2c5530', textAlign: 'center' }}>
+        <Box sx={{ display: 'flex', gap: 4 }}>
+        {/* Colonne Gauche : Infos de contact */}
+          {/* Colonne Gauche : Infos de contact */}
+<Box sx={{ flex: 1, pb: 4, borderRadius: 10 }}>
+  <Card sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column' }}>
+    
+    {/* Title at the top */}
+    <Typography
+      variant="h5"
+      sx={{
+        mb: 3,
+        fontWeight: 'bold',
+        color: '#2c5530',
+        textAlign: 'center'
+      }}
+    >
       {t('contact.phone')} & {t('contact.email')}
     </Typography>
 
-    {/* Téléphones */}
-    <Box sx={{ mb: 3, textAlign: 'center' }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1 }}>
-        <PhoneIcon sx={{ color: '#2c5530', mr: 1 }} />
-        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-          <a href="tel:0626150157" style={{ color: '#2c5530', textDecoration: 'none' }}>
-            06 26 15 01 57
-          </a>{' '}ou{' '}
-          <a href="tel:0467941574" style={{ color: '#2c5530', textDecoration: 'none' }}>
-            04 67 94 15 74
-          </a>
+    {/* Centered Content */}
+    <Box
+      sx={{
+        flexGrow: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 5,
+        textAlign: 'center',
+      }}
+    >
+      {/* Email */}
+      <Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <EmailIcon sx={{ color: '#2c5530'}} />
+          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+            <a
+              href="mailto:campinglacanotte@outlook.fr"
+              style={{ color: '#2c5530', textDecoration: 'none' }}
+            >
+              campinglacanotte@outlook.fr
+            </a>
+          </Typography>
+        </Box>
+      </Box>
+
+      {/* Phones */}
+      <Box>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1 }}>
+          <PhoneIcon sx={{ color: '#2c5530', mr: 1 }} />
+          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+            <a href="tel:0626150157" style={{ color: '#2c5530', textDecoration: 'none' }}>
+              06 26 15 01 57
+            </a>{' '}ou{' '}
+            <a href="tel:0467941574" style={{ color: '#2c5530' }}>
+              04 67 94 15 74
+            </a>
+          </Typography>
+        </Box>
+        <Typography variant="body2" color="text.secondary">
+          Horaires d'ouverture : 8h – 12h / 14h30 – 18h30
         </Typography>
       </Box>
-      <Typography variant="body2" color="text.secondary">
-        Du lundi au vendredi : 8h – 12h / 14h30 – 18h30
-      </Typography>
-    </Box>
 
-    {/* Email */}
-    <Box sx={{ mb: 3, textAlign: 'center' }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 1 }}>
-        <EmailIcon sx={{ color: '#2c5530', mr: 1 }} />
-        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-          <a
-            href="mailto:campinglacanotte@outlook.fr"
-            style={{ color: '#2c5530', textDecoration: 'none' }}
-          >
-            campinglacanotte@outlook.fr
-          </a>
-        </Typography>
-      </Box>
+      {/* Alert */}
+      <Alert severity="info" sx={{ maxWidth: 300 }}>
+        Toute réservation se fait par mail ou par téléphone.
+      </Alert>
     </Box>
-
-    <Alert severity="info" sx={{ textAlign: 'left' }}>
-      Toute réservation se fait par téléphone ou par mail.
-    </Alert>
   </Card>
 </Box>
 
 
+
+
   {/* Colonne Droite : Formulaire */}
-  <Box sx={{ flex: 1, pb: 4 }}>
+  <Box sx={{ flex: 1, pb: 4, paddingLeft: 5, borderRadius: 10 }}>
     <Card sx={{ p: 3, height: '100%' }}>
       <Typography variant="h5" sx={{ mb: 3, fontWeight: 'bold', color: '#2c5530' }}>
         ✉️ Demande de renseignements
@@ -182,26 +209,6 @@ const Contact = () => {
     </Card>
   </Box>
 </Box>
-
-        {/* Emergency Contact */}
-        <Box sx={{ mt: 6 }}>
-          <Card sx={{ backgroundColor: '#ffebee', border: '2px solid #f44336' }}>
-            <CardContent sx={{ textAlign: 'center', p: 3 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 2 }}>
-                <EmergencyIcon sx={{ fontSize: 40, color: '#f44336', mr: 1 }} />
-                <Typography variant="h5" sx={{ fontWeight: 'bold', color: '#f44336' }}>
-                  Contact d'urgence
-                </Typography>
-              </Box>
-              <Typography variant="body1">
-                En cas d'urgence pendant votre séjour :<br/>
-                <Typography component="span" variant="h6" sx={{ fontWeight: 'bold' }}>
-                  06 12 34 56 78
-                </Typography> (24h/24)
-              </Typography>
-            </CardContent>
-          </Card>
-        </Box>
       </Container>
     </Box>
   )

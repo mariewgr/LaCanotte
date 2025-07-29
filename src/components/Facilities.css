@@ -56,10 +56,6 @@
   transition: all 0.3s ease;
 }
 
-.facility-item:hover {
-  background: #e8f5e8;
-  transform: translateX(5px);
-}
 
 .check-icon {
   font-size: 1.2rem;
@@ -78,7 +74,7 @@
 /* Responsive: 1 colonne pour petits écrans */
 @media (max-width: 768px) {
   .facilities-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 colonne pour les petits écrans */
   }
   
   .section-header h2 {
@@ -88,13 +84,6 @@
   .facility-item {
     padding: 0.8rem;
   }
-}
-
-
-.facility-card:hover {
-  transform: translateY(-5px);
-  border-color: #4a7c59;
-  box-shadow: 0 10px 25px rgba(74, 124, 89, 0.15);
 }
 
 .facility-icon {

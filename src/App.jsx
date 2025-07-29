@@ -10,10 +10,12 @@ import Rates from './components/Rates'
 import Contact from './components/Contact'
 import Activities from './components/Activities'
 import Footer from './components/Footer'
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 
 function App() {
   return (
+    <BrowserRouter basename="/LaCanotte">
     <LanguageProvider>
       <div className="App">
         <Header />
@@ -26,6 +28,7 @@ function App() {
         <Footer />
       </div>
     </LanguageProvider>
+    </BrowserRouter>
   )
 }
 

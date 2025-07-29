@@ -57,35 +57,22 @@ const Rates = () => {
           ))}
         </div>
 
-        <div className="extras-section">
-          <h3>Suppléments</h3>
-          <div className="extras-list">
-            {extras.map((extra, index) => (
-              <div key={index} className="extra-row">
-                <span className="extra-name">{extra.item}</span>
-                <span className="extra-price">{extra.price}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className="booking-info">
           <div className="info-card">
-            <h3>📋 Informations importantes</h3>
+            <h3>Suppléments</h3>
             <ul>
-              <li>Arrivée : à partir de 14h</li>
-              <li>Départ : avant 12h</li>
-              <li>Séjour minimum : 3 nuits en haute saison</li>
-              <li>Caution : 100€ (restituée au départ)</li>
-              <li>Taxe de séjour : 0,66€/personne/nuit</li>
+            {extras.map((extra, index) => (
+              <li key={index} className="extra-row">
+                <span className="extra-name">{extra.item}</span>
+                <span className="extra-price">{extra.price}</span>
+              </li>
+            ))}
             </ul>
           </div>
           
           <div className="payment-info">
             <h3>💳 Modalités de paiement</h3>
             <ul>
-              <li >Acompte de 30% à la réservation</li>
-              <li >Solde à l'arrivée</li>
               <li>Espèces, chèques acceptés</li>
               <li>Chèques vacances ANCV acceptés</li>
               <li >Cartes Bancaires non acceptés</li>
