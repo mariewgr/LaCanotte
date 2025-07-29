@@ -74,7 +74,7 @@
 /* Responsive: 1 colonne pour petits écrans */
 @media (max-width: 768px) {
   .facilities-grid {
-    grid-template-columns: 1fr; /* 1 colonne pour les petits écrans */
+    grid-template-columns: 1fr;
   }
   
   .section-header h2 {

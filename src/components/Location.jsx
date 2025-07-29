@@ -34,8 +34,8 @@ const Location = () => {
 
         <div className="location-content">
           <div className="location-info">
-            <div className="map-address-card">
-              <div className="map-container" onClick={() => window.open(googleMapsUrl, '_blank')}>
+            <div>
+              <div onClick={() => window.open(googleMapsUrl, '_blank')}>
                 <LoadScript googleMapsApiKey="VOTRE_CLÉ_API">
                   <GoogleMap
                     mapContainerStyle={containerStyle}
@@ -49,7 +49,7 @@ const Location = () => {
               </div>
 
               <div className="address-section" onClick={() => window.open(googleMapsUrl, '_blank')}>
-                <h3>📍 Notre Adresse</h3>
+                <h3>📍 {t('location.adresse')}</h3>
                 <p>
                   <strong>Camping La Canotte</strong><br />
                   Boulevard Saint-Christ<br />
@@ -60,19 +60,19 @@ const Location = () => {
             </div>
 
             <div className="access-info">
-              <h3>🗺️ Accès & Transport</h3>
+              <h3>🗺️ {t('location.transport')}</h3>
               <div className="access-points">
                 <div className="access-point">
-                  <strong>🚗 Accès routier</strong>
-                  <p>Sortie A9 - Agde puis direction Le Grau-d'Agde</p>
+                  <strong>🚗 {t('location.gare')}</strong>
+                  <p>{t('location.gareDescriptions')}</p>
                 </div>
                 <div className="access-point">
-                  <strong>🚂 Gare SNCF</strong>
-                  <p>Gare d'Agde à 5 km</p>
+                  <strong>🚂 {t('location.road')}</strong>
+                  <p>{t('location.roadDescriptions')}</p>
                 </div>
                 <div className="access-point">
-                  <strong>✈️ Aéroport</strong>
-                  <p>Montpellier à 45 km</p>
+                  <strong>✈️ {t('location.aeroport')}</strong>
+                  <p>{t('location.aeroportDescriptions')}</p>
                 </div>
               </div>
             </div>

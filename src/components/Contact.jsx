@@ -88,6 +88,7 @@ const Contact = () => {
         justifyContent: 'center',
         gap: 5,
         textAlign: 'center',
+        borderRadius: 8
       }}
     >
       {/* Email */}
@@ -119,13 +120,13 @@ const Contact = () => {
           </Typography>
         </Box>
         <Typography variant="body2" color="text.secondary">
-          Horaires d'ouverture : 8h – 12h / 14h30 – 18h30
+        {t('contact.openingHours')}
         </Typography>
       </Box>
 
       {/* Alert */}
       <Alert severity="info" sx={{ maxWidth: 300 }}>
-        Toute réservation se fait par mail ou par téléphone.
+      {t('contact.reservations')}
       </Alert>
     </Box>
   </Card>
@@ -138,12 +139,12 @@ const Contact = () => {
   <Box sx={{ flex: 1, pb: 4, paddingLeft: 5, borderRadius: 10 }}>
     <Card sx={{ p: 3, height: '100%' }}>
       <Typography variant="h5" sx={{ mb: 3, fontWeight: 'bold', color: '#2c5530' }}>
-        ✉️ Demande de renseignements
+        ✉️ {t('contact.askInfos')}
       </Typography>
 
       {showSuccess && (
         <Alert severity="success" sx={{ mb: 3 }}>
-          Votre demande a été envoyée ! Nous vous répondrons rapidement.
+          {t('contact.demandSuccess')}
         </Alert>
       )}
 

@@ -30,7 +30,7 @@ const Facilities = () => {
     <section id="equipements" className="facilities">
       <div className="booking-info">
         <div>
-          <h2>Équipements</h2>
+          <h2>{t('header.facilities')}</h2>
           <ul className="facilities-grid">
             {facilities.map((extra, index) => (
               <li key={index} className="extra-row">
@@ -41,7 +41,7 @@ const Facilities = () => {
         </div>
           
           <div>
-            <h2>Loisirs</h2>
+            <h2>{t('facilities.loisirs')}</h2>
             <ul className="facilities-grid">
             {activities.map((extra, index) => (
               <li key={index} className="extra-row">
