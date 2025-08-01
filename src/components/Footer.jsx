@@ -9,7 +9,6 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="container">
-        <div className="footer-content">
           <div className="footer-section">
             <h3>Camping La Canotte</h3>
             <p>{t('footer.familyCamping')}</p>
@@ -23,7 +22,6 @@ const Footer = () => {
               campinglacanotte@outlook.fr
             </a>
             </div>
-          </div>
         </div>
 
         <div className="footer-bottom">

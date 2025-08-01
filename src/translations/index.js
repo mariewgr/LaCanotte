@@ -164,6 +164,14 @@ const translations = {
     location: {
       title: 'Lieu et Accès',
       subtitle: 'Un emplacement privilégié au cœur de l\'Hérault',
+      adresse: 'Notre Adresse',
+      transport: 'Accès & Transport',
+      gare: 'Gare de train',
+      gareDescriptions: 'Gare Agde - 5 km',
+      road: 'Accès routier',
+      roadDescriptions: 'Sortie A9 - Agde puis direction Le Grau-d\'Agde',
+      aeroport: 'Aéroport',
+      aeroportDescriptions: 'Montpellier - 45 km',
       description: 'Le camping La Canotte bénéficie d\'une situation exceptionnelle au Grau-d\'Agde, entre mer et rivière. À seulement 15 minutes à pied des plages de sable fin et en bordure de l\'Hérault, vous profiterez du meilleur des deux mondes.',
       nearbyAttractions: 'Attractions à proximité',
       attractions: {

@@ -6,24 +6,24 @@ const Facilities = () => {
   const { t } = useLanguage()
   
   const facilities = [
+    { title: t('facilities.items.stars.title')},
     { title: t('facilities.items.sanitaires.title') },
     { title: t('facilities.items.laverie.title')},
     { title: t('facilities.items.epicerie.title')},
     { title: t('facilities.items.snack.title')},
     { title: t('facilities.items.wifi.title')},
     { title: t('facilities.items.parking.title')},
-    { title: t('facilities.items.playground.title')},
     { title: t('facilities.items.big.title')},
-    { title: t('facilities.items.handicap.title')},
-    { title: t('facilities.items.stars.title')},
-    { title: t('facilities.items.nearseaandriver.title')}
+    { title: t('facilities.items.handicap.title')}
   ]
 
   const activities = [
     { title: t('activities.items.cycling.title') },
     { title: t('activities.items.minigolf.title')},
     { title: t('activities.items.pingpong.title')},
-    { title: t('activities.items.petanque.title')}
+    { title: t('activities.items.petanque.title')},
+    { title: t('facilities.items.playground.title')},
+    { title: t('facilities.items.nearseaandriver.title')}
   ]
 
   return (

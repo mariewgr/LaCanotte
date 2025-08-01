@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import emailjs from '@emailjs/browser'
+
 import {
   Box,
   Container,
@@ -26,8 +28,6 @@ const Contact = () => {
     name: '',
     email: '',
     phone: '',
-    dates: '',
-    guests: '',
     message: ''
   })
   const [showSuccess, setShowSuccess] = useState(false)
@@ -41,11 +41,39 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Ici vous pourriez ajouter la logique d'envoi du formulaire
-    console.log('Formulaire soumis:', formData)
-    setShowSuccess(true)
-    setTimeout(() => setShowSuccess(false), 5000)
+    const mailData = {
+      name: '',
+      title: '',
+      email: '',
+      message: ''
+    }
+    mailData.name = formData.name
+    mailData.email = formData.email
+    mailData.title = `Demande de contact de ${formData.name}`
+    mailData.message = `Nom : ${formData.name}\nEmail : ${formData.email}\nTéléphone : ${formData.phone}\nMessage : ${formData.message}`
+
+    emailjs.send(
+      'service_tn1leos',      // <- remplace par ton vrai ID
+      'template_q68oq5p',     // <- remplace par ton vrai ID
+      mailData,               // <- contient name, email, phone, message
+      'xhRHZGKtTAodVGuhy'       // <- remplace par ta clé publique EmailJS
+    )
+    .then(() => {
+      console.log('Demande de contact envoyée.',)
+      setShowSuccess(true)
+      setTimeout(() => setShowSuccess(false), 5000)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      })
+    })
+    .catch(() => {
+      console.error('Erreur lors de l’envoi de la demande de contact.')
+    })
   }
+  
 
   return (
     <Box id="contact" component="section" sx={{ py: 8}}>

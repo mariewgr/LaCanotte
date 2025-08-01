@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import './Location.css';
@@ -20,10 +20,6 @@ const Location = () => {
     borderRadius: '15px 15px 0 0'
   };
 
-  const onLoad = useCallback(marker => {
-    console.log('Marker loaded:', marker);
-  }, []);
-
   return (
     <section id="localisation" className="location">
       <div className="container">
@@ -36,12 +32,11 @@ const Location = () => {
           <div className="location-info">
             <div>
               <div onClick={() => window.open(googleMapsUrl, '_blank')}>
-                <LoadScript googleMapsApiKey="VOTRE_CLÉ_API">
+                <LoadScript googleMapsApiKey="AIzaSyDCLxxxHwX23Khj1CjZVIBEwTEHWpfa_vw">
                   <GoogleMap
                     mapContainerStyle={containerStyle}
                     center={position}
                     zoom={15}
-                    onLoad={onLoad}
                   >
                     <Marker position={position} />
                   </GoogleMap>

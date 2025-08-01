@@ -35,10 +35,6 @@
   transition: transform 0.3s ease;
 }
 
-.rate-card:hover {
-  transform: translateY(-5px);
-}
-
 .rate-header {
   background: #2c5530;
   color: white;
