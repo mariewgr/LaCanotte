@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from 'react'
 import translations from '../translations/index.js'
 
+
 const LanguageContext = createContext()
 
 export const useLanguage = () => {

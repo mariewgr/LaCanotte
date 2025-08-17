@@ -1,29 +1,29 @@
-import React from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
+import values from '../updates/rates.json'
 import './Rates.css'
 
-const Rates = () => {
-  const { t } = useLanguage()
+const Rates = () => { 
+  const { t, language } = useLanguage()
   
   const rates = [
     {
       period: t('rates.withoutelectricity'),
-      price: '19€',
+      price: values.rates.withoutElec + '€',
       description: t('rates.withoutElectricityDescription'),
     },
     {
       period: t('rates.withelectricity'),
-      price: '25€',
+      price: values.rates.withElec + '€',
       description: t('rates.withElectricityDescription'),
     }
   ]
 
   const extras = [
-    { item: t('rates.supplementaryPerson'), price: '8€/nuit' },
-    { item: t('rates.supplementaryChild'), price: '5€/nuit' },
-    { item: t('rates.supplementaryTeen'), price: '6,5€/nuit' },
-    { item: t('rates.dog'), price: '2€/nuit' },
-    { item: t('rates.electricity'), price: '6€/nuit' }
+    { item: t('rates.supplementaryPerson'), price: values.rates.supplementaryPerson + '€' + t('rates.night') },
+    { item: t('rates.supplementaryChild'), price: values.rates.supplementaryChild + '€' + t('rates.night') },
+    { item: t('rates.supplementaryTeen'), price: values.rates.supplementaryTeen + '€' + t('rates.night') },
+    { item: t('rates.dog'), price: values.rates.dog + '€' + t('rates.night') },
+    { item: t('rates.electricity'), price: values.rates.electricity + '€' + t('rates.night') }
   ]
 
   return (
@@ -31,7 +31,7 @@ const Rates = () => {
       <div className="container">
         <div className="section-header">
           <h2>{t('rates.title')}</h2>
-          <p>{t('rates.subtitle')}</p>
+          <p>{language === 'fr' ? values.rates.subtitleFr : values.rates.subtitleEn}</p>
         </div>
 
         <div className="rates-grid">
@@ -62,7 +62,7 @@ const Rates = () => {
             </ul>
           </div>
           
-          <div className="payment-info">
+          <div className="info-card">
             <h3>💳 {t('rates.paimentMethods')}</h3>
             <ul>
               <li>{t('rates.especes')}</li>

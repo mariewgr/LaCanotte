@@ -1,0 +1,18 @@
+{
+    "rates": {
+        "withElec": "25",
+        "withoutElec": "19",
+        "supplementaryPerson": "8",
+        "supplementaryChild": "5",
+        "supplementaryTeen" : "6,5",
+        "dog": "2",
+        "electricity": "6",
+        "subtitleFr": "Tarifs 2025 - Saison du 20 Mai au 10 Septembre",
+        "subtitleEn": "2025 Rates - Season from 20 May to 10 September"
+    },
+    "openingSeasonDatesStartFr": "20 Mai",
+    "openingSeasonDatesEndFr": "10 Septembre",
+    "openingSeasonDatesStartEn": "20 May",
+    "openingSeasonDatesEndEn": "10 September",
+    "year": "2025"
+}

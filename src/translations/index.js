@@ -1,4 +1,4 @@
-import { GrassOutlined } from "@mui/icons-material"
+import values from '../updates/rates.json'
 
 const translations = {
   fr: {
@@ -39,11 +39,7 @@ const translations = {
         handicap: {
             title: 'Accès handicapés',
             description: 'Toutes les installations sont accesibles'
-          },
-        season: {
-          title: 'Saison',
-          description: '20 mai - 10 septembre'
-        }
+          }
       }
     },
     // Facilities
@@ -186,7 +182,7 @@ const translations = {
     // Rates
     rates: {
       title: 'Nos Tarifs',
-      subtitle: 'Tarifs 2024 - Saison du 20 mai au 10 septembre',
+      subtitle: 'Tarifs ' + values.year + ' - Saison du ' + values.openingSeasonDatesStartFr + ' au ' + values.openingSeasonDatesEndFr,
       period: 'Période',
       night: '/nuit',
       pricePerNight: 'Prix par nuit',
@@ -436,7 +432,7 @@ const translations = {
     // Rates
     rates: {
       title: "Our Rates",
-      subtitle: "2024 Rates - Season from May 20 to September 10",
+      subtitle: values.year + " Rates - Season from" + values.openingSeasonDatesStartEn + " to " + values.openingSeasonDatesEndEn,
       period: "Period",
       night: "/night",
       pricePerNight: "Price per night",
